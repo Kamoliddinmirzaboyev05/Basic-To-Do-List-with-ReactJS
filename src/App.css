@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(45deg, orange, orange, rgb(0, 255, 64));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  width: 600px;
+  height: 500px;
+  border-radius: 10px;
+  border: 3px solid white;
+  padding: 50px 0px;
+
+}
+
+form {
+  width: 500px;
+  margin: 0 auto;
+}
+
+input {
+  width: 400px;
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  outline: none;
+}
+
+.add {
+  padding: 5px 20px;
+  background-color: green;
+  color: white;
+  font-size: 25px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+ol {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 25px;
+  margin-left: 45px;
+
+}
+
+.list {
+  margin: 10px 0px;
+  background-color: white;
+  padding-left: 10px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.block {
+  height: 350px;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: black;
+  border-radius: 2px;
+}
+
+.btns {
+  float: right;
+  margin-top: -3px;
+  margin-right: 3px;
+  display: flex;
+  gap: 10px;
+}
+
+.btns button {
+  padding: 2px 4px;
+  background-color: green;
+  font-size: 18px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btns button:nth-child(2) {
+  color: red;
+}
+
+.list.active {
+  background-color: rgba(0, 0, 0, 0.59);
+  text-decoration: line-through;
+  opacity: .6;
+}
+
+.fa-check,
+.fa-trash {
+  pointer-events: none;
+}
