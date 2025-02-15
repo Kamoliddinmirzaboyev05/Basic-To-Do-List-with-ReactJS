@@ -10,26 +10,45 @@ function App() {
   localStorage.setItem("DB", JSON.stringify(data));
 
   const [inputValue, setInputValue] = useState();
+  const [itemID, setItemID] = useState();
 
+  // Delete item function
   const delDB = (id) => {
     const filteredData = data.filter((item) => {
       return id != item.id;
     });
     setData([...filteredData]);
   };
-
+  const [editing, setEditing] = useState(false);
+  // Edit item function
+  const editDB = async (id) => {
+    const filteredEditData = data.filter((item) => {
+      return id == item.id;
+    });
+    setItemID(id);
+    console.log(filteredEditData);
+    setInputValue(filteredEditData[0].name);
+  };
   return (
     <>
       <div className="container">
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            if (editing) {
+              data.map((item) => {
+                if (item.id == itemID) {
+                  item.name = inputValue;
+                }
+              });
+            } else {
+              const obj = {
+                id: Math.floor(Math.random() * 10000),
+                name: inputValue,
+              };
+              setData([...data, obj]);
+            }
 
-            const obj = {
-              id: Math.floor(Math.random() * 10000),
-              name: inputValue,
-            };
-            setData([...data, obj]);
             localStorage.setItem("DB", JSON.stringify(data));
             setInputValue("");
           }}
@@ -55,7 +74,13 @@ function App() {
                 <li className="list">
                   {item.name}
                   <div className="btns">
-                    <button className="trash">
+                    <button
+                      onClick={() => {
+                        editDB(item.id);
+                        setEditing(true);
+                      }}
+                      className="trash"
+                    >
                       <i className="fa-solid fa-pen"></i>
                     </button>
                     <button
