@@ -54,7 +54,7 @@ function App() {
           }}
           className="form"
         >
-          <input
+          <input placeholder="Write and DO!"
             value={inputValue}
             onInput={(e) => {
               setInputValue(e.target.value);
